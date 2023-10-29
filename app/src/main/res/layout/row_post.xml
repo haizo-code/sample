@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <import type="android.text.TextUtils"/>
+
+        <variable
+            name="post"
+            type="com.example.myapplication3.sample.model.Post"/>
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:strokeWidth="0.5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineBegin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="8dp"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="8dp"/>
+
+            <View
+                android:id="@+id/mainBackgroundView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineBegin"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <include
+                android:id="@+id/layout_post_header_binding"
+                layout="@layout/layout_post_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:post="@{post}"/>
+
+            <FrameLayout
+                android:id="@+id/contentFL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="150dp"
+                android:background="@drawable/bg_active_selector"
+                app:layout_constraintTop_toBottomOf="@id/layout_post_header_binding">
+
+                <ViewStub
+                    android:id="@+id/vsTextPost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout="@layout/layout_post_text"
+                    app:post="@{post}"/>
+
+                <ViewStub
+                    android:id="@+id/vsImagePost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout="@layout/layout_post_image"
+                    app:post="@{post}"/>
+
+                <ViewStub
+                    android:id="@+id/vsVideoPost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout="@layout/layout_post_video"
+                    app:post="@{post}"/>
+            </FrameLayout>
+
+            <include
+                android:id="@+id/footerBinding"
+                layout="@layout/layout_post_footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/mainBackgroundView"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineBegin"
+                app:layout_constraintTop_toBottomOf="@id/contentFL"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

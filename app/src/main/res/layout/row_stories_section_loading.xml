@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="item_1,item_2,item_3,item_4"
+                app:flow_horizontalBias="0"
+                app:flow_horizontalGap="12dp"
+                app:flow_horizontalStyle="packed"
+                app:flow_maxElementsWrap="1"
+                app:flow_wrapMode="none"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <include
+                android:id="@+id/item_1"
+                layout="@layout/row_story_shimmer"/>
+
+            <include
+                android:id="@+id/item_2"
+                layout="@layout/row_story_shimmer"/>
+
+            <include
+                android:id="@+id/item_3"
+                layout="@layout/row_story_shimmer"/>
+
+            <include
+                android:id="@+id/item_4"
+                layout="@layout/row_story_shimmer"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+</layout>
